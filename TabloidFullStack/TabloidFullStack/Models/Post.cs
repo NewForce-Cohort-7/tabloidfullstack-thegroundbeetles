@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
@@ -6,6 +7,7 @@ namespace TabloidFullStack.Models
 {
     public class Post
     {
+
         public int Id { get; set; }
 
         [Required]
@@ -25,15 +27,10 @@ namespace TabloidFullStack.Models
 
         public bool IsApproved { get; set; }
 
-        [Required]
-
-       
-        [DisplayName("Category")]
-        public int CategoryId { get; set; }
-        public Category Category { get; set; }
         public int UserProfileId { get; set; }
         public UserProfile UserProfile { get; set; }
 
+        public List<Comment> comment { get; set; }
     }
 }
 
