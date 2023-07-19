@@ -11,6 +11,7 @@ namespace TabloidFullStack
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
             builder.Services.AddTransient<IUserRepository, UserRepository>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
