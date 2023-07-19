@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
 namespace TabloidFullStack.Models
@@ -22,14 +23,14 @@ namespace TabloidFullStack.Models
 
         [DisplayName("Published")]
         [DataType(DataType.Date)]
-        public DateTime? PublishDateTime { get; set; }
+        public DateTime PublishDateTime { get; set; }
 
         public bool IsApproved { get; set; }
 
-        [DisplayName("Author")]
         public int UserProfileId { get; set; }
         public UserProfile UserProfile { get; set; }
 
         public List<Comment> comment { get; set; }
     }
 }
+
