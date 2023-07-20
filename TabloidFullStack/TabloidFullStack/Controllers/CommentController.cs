@@ -30,5 +30,27 @@ namespace TabloidFullStack.Controllers
             return Ok(comment);
         }
 
+        [HttpPost("/posts/{postId}/comments")]
+        public IActionResult Post(int postId, Comment comment)
+        {
+            // access the postId from the URL directly as a parameter.
+
+            var post = _postRepository.GetPostById(postId);
+            if (post == null)
+            {
+                // Return an appropriate response if the post with the given ID is not found.
+                return NotFound();
+            }
+
+            comment.PostId = postId; // Set the PostId property of the comment.
+
+           
+            _commentRepository.Add(comment);
+
+            // Return a response indicating the comment was created, along with the comment itself.
+            return CreatedAtAction("Get", new { id = comment.Id }, comment);
+        }
+
+
     }
 }
