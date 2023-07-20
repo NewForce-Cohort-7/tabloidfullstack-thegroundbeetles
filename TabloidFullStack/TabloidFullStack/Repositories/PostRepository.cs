@@ -49,7 +49,7 @@ namespace TabloidFullStack.Repositories
                             Category = new Category()
                             {
                                 Id = DbUtils.GetInt(reader, "CategoryId"),
-                                Name = DbUtils.GetString(reader, "Name"),
+                                Name = DbUtils.GetString(reader, "CategoryName"),
                             },
                             UserProfileId = DbUtils.GetInt(reader, "PostUserProfileId"),
                             UserProfile = new UserProfile()
@@ -114,7 +114,7 @@ namespace TabloidFullStack.Repositories
                             Category = new Category()
                             {
                                 Id = DbUtils.GetInt(reader, "CategoryId"),
-                                Name = DbUtils.GetString(reader, "Name"),
+                                Name = DbUtils.GetString(reader, "CategoryName"),
                             },
                             UserProfileId = DbUtils.GetInt(reader, "PostUserProfileId"),
                             UserProfile = new UserProfile()
@@ -127,12 +127,19 @@ namespace TabloidFullStack.Repositories
                                 CreateDateTime = DbUtils.GetDateTime(reader, "UserProfileCreateDateTime"),
                                 ImageLocation = DbUtils.GetString(reader, "AvatarImage"),
                                 UserTypeId = DbUtils.GetInt(reader, "UserTypeId")
-                            }
+                            },
 
                         };
                     }
+
+                    reader.Close();
+                    return post;
                 }
+
+                
             }
+                
+        
         }
     }
 }
