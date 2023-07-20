@@ -11,6 +11,7 @@ namespace TabloidFullStack
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
             builder.Services.AddTransient<IUserRepository, UserRepository>();
             builder.Services.AddTransient<ICommentRepository, CommentRepository>();
             builder.Services.AddTransient<IPostRepository, PostRepository>();
