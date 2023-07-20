@@ -4,6 +4,8 @@ import Hello from "./Hello";
 import ViewTags from "./Tags/ViewTags";
 import CommentList from "./CommentList";
 import CategoryList from "./CategoryList";
+import { Post } from "./Post/Post";
+import { PostList } from "./Post/PostList";
 
 export default function ApplicationViews() {
 
@@ -19,6 +21,7 @@ export default function ApplicationViews() {
           {/* route for the commentlist uses :postId ->using url parameter */}
       <Route path="/comments/:postId" element={<CommentList />} />
       <Route path="/category" element= {<CategoryList />} />
+      <Route path="/posts" element= {<PostList />} />
       </Routes>
 
       
