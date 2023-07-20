@@ -6,9 +6,9 @@ export const Post = ({ post }) => {
     return (
         <Card style={{ width: '18rem' }}>
           <ListGroup variant="flush">
-            <ListGroupItem>{post.title}</ListGroupItem>
-            <ListGroupItem>{`${post.userProfile.firstName} ${post.userProfile.lastName}`}</ListGroupItem>
-            <ListGroupItem>{post.category.name}</ListGroupItem>
+            <ListGroupItem>Post Author: {post.title}</ListGroupItem>
+            <ListGroupItem>Username: {`${post.userProfile.firstName} ${post.userProfile.lastName}`}</ListGroupItem>
+            <ListGroupItem>Category: {post.category.name}</ListGroupItem>
           </ListGroup>
         </Card>
         

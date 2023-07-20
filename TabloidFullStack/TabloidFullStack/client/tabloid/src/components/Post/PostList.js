@@ -19,19 +19,12 @@ export const PostList = () => {
       <div className="post-list">
         <div className="row justify-content-center">
           <div className="cards-column">
-            <Table> 
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Category</th>
-              </tr>
-            </thead>
+            
               {posts.map((post) => {
                 // console.log(post)
                 return  <Post post={post} />
               })}
-            </Table>
+            
           </div>
         </div>
       </div>
