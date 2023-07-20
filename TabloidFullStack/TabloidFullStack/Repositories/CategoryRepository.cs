@@ -17,11 +17,11 @@ namespace TabloidFullStack.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                SELECT Id, Name
-                       FROM Category";
+                SELECT Id, Name FROM Category
+                      ORDER BY Name"; 
 
-                    var reader = cmd.ExecuteReader();
-
+                    var reader = cmd.ExecuteReader(); 
+                    
                     var categories = new List<Category>();
                     while (reader.Read()) //tells it to keep reading data until the end of data.
                     {

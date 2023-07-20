@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using TabloidFullStack.Models;
 using TabloidFullStack.Repositories;
 
+
 namespace TabloidFullStack.Controllers
 {
     [Route("api/[controller]")]
@@ -19,6 +20,7 @@ namespace TabloidFullStack.Controllers
         public IActionResult Get()
         {
             return Ok(_categoryRepository.GetAll());
+               
         }
 
        
