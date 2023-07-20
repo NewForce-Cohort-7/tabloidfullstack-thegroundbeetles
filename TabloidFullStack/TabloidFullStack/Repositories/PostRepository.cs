@@ -75,7 +75,7 @@ namespace TabloidFullStack.Repositories
             }
         }
 
-        public Post GetById(int id)
+        public Post GetPostById(int id)
         { using (var conn = Connection)
             {
                 conn.Open();

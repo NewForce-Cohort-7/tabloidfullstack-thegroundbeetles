@@ -7,7 +7,8 @@ export const Post = ({ post }) => {
         <Card style={{ width: '18rem' }}>
           <ListGroup variant="flush">
             <ListGroupItem>Post Author: {post.title}</ListGroupItem>
-            <ListGroupItem>Username: {`${post.userProfile.firstName} ${post.userProfile.lastName}`}</ListGroupItem>
+            <Link to={`/posts/${post.id}`}>
+            <ListGroupItem>Username: {`${post.userProfile.firstName} ${post.userProfile.lastName}`}</ListGroupItem></Link>
             <ListGroupItem>Category: {post.category.name}</ListGroupItem>
           </ListGroup>
         </Card>

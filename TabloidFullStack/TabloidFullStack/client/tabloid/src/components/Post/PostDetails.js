@@ -1,36 +1,41 @@
-import React, { useEffect, useContext, useState } from "react";
-import { ListGroup, ListGroupItem } from "reactstrap";
-import { getPost } from "../APIManagers/PostManager";
+import React from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Post } from "./Post";
-import Card from 'react-bootstrap/Card';
+import { format } from "date-fns";
 
-const PostDetails = () => {
+import { Card, CardBody, CardImg, CardText, CardTitle } from "reactstrap";
+import { getPostById } from "../../Managers/PostManager";
+
+export const PostDetails = () => {
     const [post, setPost] = useState();
     const { id } = useParams();
+    
   
     useEffect(() => {
-      getPost(id).then(setPost);
+      getPostById(id).then(setPost);
     }, []);
   
     if (!post) {
       return null;
     }
-}
+
 
 return (
-<Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
-    </Card>
-)
+<Card style={{ width: '18rem' }} key={post.id}>
+      <CardImg variant="top" src={post?.imageLocation} alt="Not found" />
+      <CardBody>
+        <CardTitle><b>{post.title}</b></CardTitle>
+        <CardText>
+        {post.content}
+        </CardText>
+        <CardText>
+          Posted on: {post.publishDateTime}
+          Created by: {post?.userProfile?.displayName}
+        </CardText>
+      </CardBody> 
+</Card>
+    
+    
+);
+};
 
-
-export default PostDetails

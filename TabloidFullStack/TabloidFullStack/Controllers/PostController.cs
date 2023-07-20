@@ -24,7 +24,7 @@ namespace TabloidFullStack.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            Post post = _postRepository.GetById(id);
+            Post post = _postRepository.GetPostById(id);
             if (post == null)
             {
                 return NotFound();

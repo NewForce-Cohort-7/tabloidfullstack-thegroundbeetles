@@ -35,10 +35,7 @@ namespace TabloidFullStack.Models
         public Category? Category { get; set; }
         public List<Comment> comment { get; set; }
 
-        [DisplayName("Category")]
-        public int CategoryId { get; set; }
-
-        public Category Category { get; set; }
+       
     }
 }
 
