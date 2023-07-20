@@ -44,7 +44,7 @@ namespace TabloidFullStack.Controllers
 
             comment.PostId = postId; // Set the PostId property of the comment.
 
-           
+
             _commentRepository.Add(comment);
 
             // Return a response indicating the comment was created, along with the comment itself.
