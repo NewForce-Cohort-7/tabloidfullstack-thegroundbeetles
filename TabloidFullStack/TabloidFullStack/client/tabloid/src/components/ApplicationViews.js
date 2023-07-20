@@ -4,6 +4,8 @@ import Hello from "./Hello";
 import CommentList from "./CommentList";
 import CategoryList from "./CategoryList";
 import CommentForm from "./CommentForm";
+import { Post } from "./Post/Post";
+import { PostList } from "./Post/PostList";
 
 
 export default function ApplicationViews() {
@@ -18,6 +20,7 @@ export default function ApplicationViews() {
       <Route path="/post/comments/:postId" element={<CommentForm />} />
 
       <Route path="/category" element= {<CategoryList />} />
+      <Route path="/posts" element= {<PostList />} />
       </Routes>
    );
  
