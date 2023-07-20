@@ -49,7 +49,7 @@ namespace TabloidFullStack.Repositories
                             Category = new Category()
                             {
                                 Id = DbUtils.GetInt(reader, "CategoryId"),
-                                Name = DbUtils.GetString(reader, "Name"),
+                                Name = DbUtils.GetString(reader, "CategoryName"),
                             },
                             UserProfileId = DbUtils.GetInt(reader, "PostUserProfileId"),
                             UserProfile = new UserProfile()

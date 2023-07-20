@@ -1,14 +1,17 @@
 import React from "react";
-import { Card, CardBody } from "reactstrap";
+import { Link } from "react-router-dom";
+import { Card, CardBody, ListGroup, ListGroupItem} from "reactstrap";
 
-export const Post = ({post}) => {
+export const Post = ({ post }) => {
     return (
         <Card style={{ width: '18rem' }}>
           <ListGroup variant="flush">
-            <ListGroup.Item>{post.title}</ListGroup.Item>
-            <ListGroup.Item>{`${post.userProfile.firstname} ${post.userProfile.lastname}`}</ListGroup.Item>
-            <ListGroup.Item>{post.category.name}</ListGroup.Item>
+            <ListGroupItem>{post.title}</ListGroupItem>
+            <ListGroupItem>{`${post.userProfile.firstName} ${post.userProfile.lastName}`}</ListGroupItem>
+            <ListGroupItem>{post.category.name}</ListGroupItem>
           </ListGroup>
         </Card>
+        
       );
 }
+
