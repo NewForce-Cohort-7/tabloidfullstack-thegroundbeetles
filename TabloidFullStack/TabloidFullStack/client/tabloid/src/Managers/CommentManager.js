@@ -9,7 +9,7 @@ export const  GetCommentsByPost = (postId) => {
       .then((res) => res.json())
   };
 
-  /*/posts/{postId}/comments*/
+
 
   export const addComment = (singlePost) => { 
     return fetch(baseUrl, {

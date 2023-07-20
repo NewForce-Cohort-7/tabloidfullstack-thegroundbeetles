@@ -11,9 +11,12 @@ namespace TabloidFullStack.Controllers
     public class CommentController : ControllerBase
     {
         private readonly ICommentRepository _commentRepository;
-        public CommentController(ICommentRepository commentRepository)
+
+        private readonly IPostRepository _postRepository;
+        public CommentController(ICommentRepository commentRepository, IPostRepository postRepository)
         {
             _commentRepository = commentRepository;
+            _postRepository = postRepository;
         }
 
         [HttpGet("GetCommentsByPost")]
@@ -30,20 +33,9 @@ namespace TabloidFullStack.Controllers
             return Ok(comment);
         }
 
-        [HttpPost("/posts/{postId}/comments")]
-        public IActionResult Post(int postId, Comment comment)
+        [HttpPost]
+        public IActionResult Post(Comment comment)
         {
-            // access the postId from the URL directly as a parameter.
-
-            var post = _postRepository.GetPostById(postId);
-            if (post == null)
-            {
-                // Return an appropriate response if the post with the given ID is not found.
-                return NotFound();
-            }
-
-            comment.PostId = postId; // Set the PostId property of the comment.
-
 
             _commentRepository.Add(comment);
 

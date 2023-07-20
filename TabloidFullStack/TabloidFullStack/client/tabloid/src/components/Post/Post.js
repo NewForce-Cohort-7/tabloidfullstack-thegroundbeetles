@@ -10,6 +10,7 @@ export const Post = ({ post }) => {
             <ListGroupItem>Username: {`${post.userProfile.firstName} ${post.userProfile.lastName}`}</ListGroupItem>
             <ListGroupItem>Category: {post.category.name}</ListGroupItem>
           </ListGroup>
+          <Link to={`/post/comments/${post.id}`}>Add Comment</Link>
         </Card>
         
       );
