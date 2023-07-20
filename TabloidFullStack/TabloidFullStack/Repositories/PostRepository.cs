@@ -31,7 +31,8 @@ namespace TabloidFullStack.Repositories
                               LEFT JOIN Category c ON p.CategoryId = c.id
                               LEFT JOIN UserProfile u ON p.UserProfileId = u.Id
                               LEFT JOIN UserType ut ON u.UserTypeId = ut.id
-                        WHERE IsApproved = 1 AND PublishDateTime < SYSDATETIME()";
+                        WHERE IsApproved = 1 AND PublishDateTime < SYSDATETIME()
+                            ORDER BY PublishDateTime desc";
                     var reader = cmd.ExecuteReader();
 
                     var posts = new List<Post>();
