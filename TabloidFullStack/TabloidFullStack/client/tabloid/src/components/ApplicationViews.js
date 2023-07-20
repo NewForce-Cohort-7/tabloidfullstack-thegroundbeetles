@@ -13,7 +13,7 @@ export default function ApplicationViews() {
         <Route path="/tags" element={<ViewTags />} >
         </Route>
 
-        {/* route for the commentlist uses :postId ->using url parameter */}
+      {/* route for the commentlist uses :postId ->using url parameter */}
       <Route path="/comments/:postId" element={<CommentList />} />
       </Routes>
 

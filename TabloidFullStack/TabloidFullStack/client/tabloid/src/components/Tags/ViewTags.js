@@ -1,14 +1,16 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import { getAllTags } from "../../Managers/TagManager";
 
 export default function ViewTags() {
-  return (
-    <span style={{
-      position: "fixed",
-      left: 0,
-      right: 0,
-      top: "50%",
-      marginTop: "-0.5rem",
-      textAlign: "center",
-    }}>Welcome to Tags!</span>
-  );
+  
+  const [Tags, setTags] = useState([])
+
+  const fetchTags = () => {
+    getAllTags().then(allTags => setTags(allTags));
+  }
+  useEffect(() => {
+    fetchTags();
+  }, [])
 }
+
+    
