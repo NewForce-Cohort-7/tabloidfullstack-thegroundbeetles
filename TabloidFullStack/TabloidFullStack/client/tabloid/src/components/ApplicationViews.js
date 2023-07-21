@@ -24,7 +24,7 @@ export default function ApplicationViews() {
           {/* route for the commentlist uses :postId ->using url parameter */}
       <Route path="/comments/:postId" element={<CommentList />} />
       <Route path="/category" element= {<CategoryList />} />
-      <Route path="/posts/add" element={<CategoryForm />} />
+      <Route path="/category/add" element={<CategoryForm />} />
       <Route path="/posts" element= {<PostList />} />
       <Route path="/posts/:id" element= {<PostDetails/>} />
       <Route path="/tags" element={<ViewTags />}/>
