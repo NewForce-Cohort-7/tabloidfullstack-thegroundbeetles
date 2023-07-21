@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TabloidFullStack.Models;
 using TabloidFullStack.Repositories;
 
 namespace TabloidFullStack.Controllers
@@ -19,5 +20,18 @@ namespace TabloidFullStack.Controllers
         {
             return Ok(_postRepository.GetAll());
         }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            Post post = _postRepository.GetPostById(id);
+            if (post == null)
+            {
+                return NotFound();
+            }
+            return Ok(post);
+        }
+
     }
+
 }
