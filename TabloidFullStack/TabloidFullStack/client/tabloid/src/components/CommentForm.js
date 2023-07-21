@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { addComment } from "../Managers/CommentManager";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+// import { Button } from 'react-bootstrap';
+// import Modal  from 'react-bootstrap/Modal';
+// import { Form } from 'react-bootstrap'; // To use Form.Group and Form.Control components
 
 const CommentForm= ()=> {
   const [comment, setComment] = useState({
@@ -14,6 +17,15 @@ const CommentForm= ()=> {
 
   const navigate = useNavigate();
   const { postId } = useParams();
+//   const [showModal, setShowModal] = useState(false); // State to control the visibility of the modal
+
+//   const handleCloseModal = () => {
+//     setShowModal(false);
+//   };
+
+//   const handleShowModal = () => {
+//     setShowModal(true);
+//   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,6 +45,53 @@ const CommentForm= ()=> {
     addComment(commentToSendToAPI) // Use the addComment function to add the comment
       .then(() => navigate("/")); // Redirect after adding the comment
   };
+
+
+//   return (
+//     <>
+//       <button onClick={handleShowModal} className="btn btn-primary">
+//         Create a New Comment
+//       </button>
+
+//       <Modal show={showModal} onHide={handleCloseModal}>
+//         <Modal.Header closeButton>
+//           <Modal.Title>Create a New Comment</Modal.Title>
+//         </Modal.Header>
+//         <Modal.Body>
+//           <Form>
+//             <Form.Group>
+//               <Form.Label>Subject:</Form.Label>
+//               <Form.Control
+//                 type="text"
+//                 value={comment.subject}
+//                 onChange={(event) =>
+//                   setComment({ ...comment, subject: event.target.value })
+//                 }
+//               />
+//             </Form.Group>
+//             <Form.Group>
+//               <Form.Label>Content:</Form.Label>
+//               <Form.Control
+//                 type="text"
+//                 value={comment.content}
+//                 onChange={(event) =>
+//                   setComment({ ...comment, content: event.target.value })
+//                 }
+//               />
+//             </Form.Group>
+//           </Form>
+//         </Modal.Body>
+//         <Modal.Footer>
+//           <Button variant="secondary" onClick={handleCloseModal}>
+//             Close
+//           </Button>
+//           <Button variant="primary" onClick={handleSubmit}>
+//             Save changes
+//           </Button>
+//         </Modal.Footer>
+//       </Modal>
+//     </>
+//   );
 
   return (
     <form className="comment-form">
