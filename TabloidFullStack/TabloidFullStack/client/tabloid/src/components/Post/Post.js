@@ -11,7 +11,6 @@ export const Post = ({ post }) => {
             <ListGroupItem>Post Author: {post?.userProfile?.displayName}</ListGroupItem>
             <ListGroupItem>Category: {post.category.name}</ListGroupItem>
           </ListGroup>
-          <Link to={`/post/comments/${post.id}`}>Add Comment</Link>
         </Card>
         
       );

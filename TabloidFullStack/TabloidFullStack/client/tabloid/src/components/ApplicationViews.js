@@ -15,7 +15,7 @@ export default function ApplicationViews() {
       
       <Route path="/" element={<Hello />} /> 
           {/* route for the commentlist uses :postId ->using url parameter */}
-      <Route path="/comments/:postId" element={<CommentList />} />
+      {/* <Route path="/comments/:postId" element={<CommentList />} /> */}
 
           /*No idea if this is what the url will resemble*/
       <Route path="/posts/:postId/comments" element={<CommentForm />} />

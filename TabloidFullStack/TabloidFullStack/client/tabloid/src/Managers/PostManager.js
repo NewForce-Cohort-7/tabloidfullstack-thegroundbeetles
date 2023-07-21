@@ -7,7 +7,10 @@ export const getAllPosts = () => {
     .then((res) => res.json())
 };
 
-
+export const GetCommentsByPost= (postId)=> {
+  return fetch(`api/Comment/GetCommentsByPost?postId=${postId}`) 
+    .then((res) => res.json())
+};
 
  export const getPostById =(id) => {
   return fetch (`${baseUrl}/${id}`).then((res)=> res.json())
