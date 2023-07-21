@@ -23,6 +23,13 @@ namespace TabloidFullStack.Controllers
                
         }
 
-       
+
+        [HttpPost]
+        public IActionResult Category(Category category)
+        {
+            _categoryRepository.Add(category);
+            return CreatedAtAction("Get", new { id = category.Id }, category);
+        }
+
     }
 }

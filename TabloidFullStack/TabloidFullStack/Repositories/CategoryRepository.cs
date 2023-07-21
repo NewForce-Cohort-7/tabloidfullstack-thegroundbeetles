@@ -39,6 +39,26 @@ namespace TabloidFullStack.Repositories
                 }
             }
         }
+        public void Add(Category category) //saves a NEW post. Like an insert. 
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO Category (Id, Name)
+                        OUTPUT INSERTED.ID
+                        VALUES (@Id, @Name)";
+
+                    DbUtils.AddParameter(cmd, "@Id", category.Id);
+                    DbUtils.AddParameter(cmd, "@Name",category.Name);
+                    
+
+                    category.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
     }
 }
 
