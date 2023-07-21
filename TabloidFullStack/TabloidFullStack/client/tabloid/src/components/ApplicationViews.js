@@ -6,6 +6,9 @@ import CategoryList from "./CategoryList";
 import CommentForm from "./CommentForm";
 import { Post } from "./Post/Post";
 import { PostList } from "./Post/PostList";
+import { PostDetails } from "./Post/PostDetails";
+
+
 import { ViewTags } from "./Tags/ViewTags";
 
 export default function ApplicationViews() {
@@ -26,6 +29,7 @@ export default function ApplicationViews() {
 
       <Route path="/category" element= {<CategoryList />} />
       <Route path="/posts" element= {<PostList />} />
+      <Route path="/posts/:id" element= {<PostDetails/>} />
       <Route path="/tags" element={<ViewTags />}/>
       </Routes>
 

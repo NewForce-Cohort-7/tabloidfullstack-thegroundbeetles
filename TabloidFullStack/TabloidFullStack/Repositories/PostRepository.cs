@@ -76,11 +76,10 @@ namespace TabloidFullStack.Repositories
         }
 
         public Post GetPostById(int id)
-        {
-            using (var conn = Connection)
+        { using (var conn = Connection)
             {
                 conn.Open();
-                using (var cmd = conn.CreateCommand())
+                using (var cmd = conn.CreateCommand()) 
                 {
                     cmd.CommandText = @"SELECT p.Id AS PostId, p.Title, p.Content, 
                               p.ImageLocation AS HeaderImage,
@@ -95,14 +94,14 @@ namespace TabloidFullStack.Repositories
                               LEFT JOIN Category c ON p.CategoryId = c.id
                               LEFT JOIN UserProfile u ON p.UserProfileId = u.Id
                               LEFT JOIN UserType ut ON u.UserTypeId = ut.id
-                        WHERE p.Id = @id";
+                        WHERE IsApproved = 1 AND PublishDateTime < SYSDATETIME()
+                           AND p.id = @id";
 
                     DbUtils.AddParameter(cmd, "@Id", id);
 
                     var reader = cmd.ExecuteReader();
-
                     Post post = null;
-                    if (reader.Read())
+                    if (reader.Read()) 
                     {
                         post = new Post()
                         {
@@ -129,17 +128,19 @@ namespace TabloidFullStack.Repositories
                                 CreateDateTime = DbUtils.GetDateTime(reader, "UserProfileCreateDateTime"),
                                 ImageLocation = DbUtils.GetString(reader, "AvatarImage"),
                                 UserTypeId = DbUtils.GetInt(reader, "UserTypeId")
-                            }
+                            },
 
                         };
                     }
 
                     reader.Close();
-
                     return post;
                 }
-            }
-        }
 
+                
+            }
+                
+        
+        }
     }
 }

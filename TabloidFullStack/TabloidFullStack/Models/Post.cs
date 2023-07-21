@@ -30,12 +30,12 @@ namespace TabloidFullStack.Models
         public int UserProfileId { get; set; }
         public UserProfile UserProfile { get; set; }
 
-        public List<Comment> comment { get; set; }
-
         [DisplayName("Category")]
         public int CategoryId { get; set; }
+        public Category? Category { get; set; }
+        public List<Comment> comment { get; set; }
 
-        public Category Category { get; set; }
+       
     }
 }
 
