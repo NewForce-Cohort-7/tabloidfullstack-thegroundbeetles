@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getAllTags } from "../../Managers/TagManager";
 
-export default function ViewTags() {
+export const ViewTags = () => {
   
   const [Tags, setTags] = useState([])
 
