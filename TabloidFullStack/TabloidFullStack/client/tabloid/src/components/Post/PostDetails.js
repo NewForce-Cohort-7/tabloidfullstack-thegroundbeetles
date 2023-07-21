@@ -1,8 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { format } from "date-fns";
-
 import { Card, CardBody, CardImg, CardText, CardTitle } from "reactstrap";
 import { getPostById } from "../../Managers/PostManager";
 
