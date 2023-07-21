@@ -24,13 +24,15 @@ return (
 <Card style={{ width: '18rem' }} key={post.id}>
       <CardImg variant="top" src={post?.imageLocation} alt="Not found" />
       <CardBody>
-        <CardTitle><b>{post.title}</b></CardTitle>
+        <CardTitle><b>Title: {post.title}</b></CardTitle>
         <CardText>
         {post.content}
         </CardText>
         <CardText>
           Posted on: {post.publishDateTime}
-          Created by: {post?.userProfile?.displayName}
+          </CardText>
+        <CardText>
+        Created by: {post?.userProfile?.displayName}
         </CardText>
       </CardBody> 
 </Card>
