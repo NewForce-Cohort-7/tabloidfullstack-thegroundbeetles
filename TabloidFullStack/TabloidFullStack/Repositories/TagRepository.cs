@@ -14,7 +14,8 @@ namespace TabloidFullStack.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT Id, Name FROM Tag";
+                    cmd.CommandText = "SELECT Id, Name FROM Tag" +
+                        "ORDER BY Name";
                     var reader = cmd.ExecuteReader();
 
                     var tags = new List<Tag>();
