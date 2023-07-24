@@ -36,7 +36,7 @@ namespace TabloidFullStack.Controllers
         [HttpPost]
         public IActionResult Post(Comment comment)
         {
-
+            comment.CreateDateTime = DateTime.Now;
             _commentRepository.Add(comment);
 
             // Return a response indicating the comment was created, along with the comment itself.

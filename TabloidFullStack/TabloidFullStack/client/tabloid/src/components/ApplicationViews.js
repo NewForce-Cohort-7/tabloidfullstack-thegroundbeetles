@@ -18,7 +18,7 @@ export default function ApplicationViews() {
       {/* <Route path="/comments/:postId" element={<CommentList />} /> */}
 
           /*No idea if this is what the url will resemble*/
-      <Route path="/posts/:postId/comments" element={<CommentForm />} />
+      <Route path="/posts/:id/comments" element={<CommentForm />} />
       <Route path="/category" element= {<CategoryList />} />
       <Route path="/posts" element= {<PostList />} />
       <Route path="/posts/:id" element= {<PostDetails/>} />

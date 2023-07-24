@@ -5,6 +5,7 @@ import { Button, Card, CardBody, CardImg, CardText, CardTitle } from "reactstrap
 import { Link } from "react-router-dom";
 import { getPostById } from "../../Managers/PostManager";
 import CommentList from "../CommentList";
+import CommentForm from "../CommentForm";
 
 
 export const PostDetails = () => {

@@ -16,7 +16,7 @@ const CommentForm= ()=> {
   });
 
   const navigate = useNavigate();
-  const { postId } = useParams();
+  const { id } = useParams();
 //   const [showModal, setShowModal] = useState(false); // State to control the visibility of the modal
 
 //   const handleCloseModal = () => {
@@ -37,8 +37,8 @@ const CommentForm= ()=> {
     const commentToSendToAPI = {
       subject: comment.subject,
       content: comment.content,
-      createDateTime: Date.now(),
-      postId: postId, // Pass the postId received from the url? how?from route in AppView
+    //   createDateTime: Date.now(),
+      postId: +id, // Pass the postId  from the url? how? + sign converts it from string to int in object
       userProfileId: appUserObject.id,
     };
 
@@ -94,7 +94,7 @@ const CommentForm= ()=> {
 //   );
 
   return (
-    <form className="comment-form">
+    <form className="comment-form" onSubmit={(clickEvent) => handleSubmit(clickEvent)} >
       <h2 className="comment-form-title">Create a New Comment</h2>
       <fieldset>
         <div className="form-group">
@@ -118,7 +118,7 @@ const CommentForm= ()=> {
           />
         </div>
       </fieldset>
-      <button onClick={(clickEvent) => handleSubmit(clickEvent)} className="btn btn-primary">
+      <button type="submit" className="btn btn-primary">
         Submit Comment
       </button>
     </form>
