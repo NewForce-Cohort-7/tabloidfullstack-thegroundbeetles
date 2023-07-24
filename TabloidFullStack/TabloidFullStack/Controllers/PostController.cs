@@ -32,6 +32,14 @@ namespace TabloidFullStack.Controllers
             return Ok(post);
         }
 
+        [HttpPost]
+        public IActionResult Post(Post post)
+        {
+            _postRepository.Add(post);
+            return CreatedAtAction("Get", new { id = post.Id }, post);
+        }
+
+
     }
 
 }
