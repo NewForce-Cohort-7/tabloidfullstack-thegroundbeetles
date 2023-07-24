@@ -40,7 +40,7 @@ namespace TabloidFullStack.Controllers
             _commentRepository.Add(comment);
 
             // Return a response indicating the comment was created, along with the comment itself.
-            return CreatedAtAction("Get", new { id = comment.Id }, comment);
+            return NoContent();
         }
 
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { addComment } from "../Managers/CommentManager";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+
 // import { Button } from 'react-bootstrap';
 // import Modal  from 'react-bootstrap/Modal';
 // import { Form } from 'react-bootstrap'; // To use Form.Group and Form.Control components
@@ -43,7 +44,7 @@ const CommentForm= ()=> {
     };
 
     addComment(commentToSendToAPI) // Use the addComment function to add the comment
-      .then(() => navigate("/")); // Redirect after adding the comment
+      .then(() => navigate(`/posts/${id}`)); // Redirect after adding the comment
   };
 
 
