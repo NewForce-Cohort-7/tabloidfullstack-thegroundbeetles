@@ -3,11 +3,12 @@ import React, { useState, useEffect } from "react";
 // import { getAllCategories } from "../APIManagers/CategoryManager";
 import { Category } from "./Category";
 import { getAllCategories } from "../Managers/CategoryManager";
+import { useNavigate } from "react-router-dom";
 
 
 const CategoryList = () => {
   const [categories, setCategory] = useState([]);
-
+  const navigate = useNavigate();
   const getCategories = () => {
     getAllCategories().then(allCategories => setCategory(allCategories)); 
   };
@@ -26,8 +27,16 @@ return (
           ))}
         </div>
       </div>
+      <button onClick={() => navigate("/category/add")}>Create Category</button>
     </div>
+     
+  
+   
+
   );
 };
+
+
+
 
 export default CategoryList;

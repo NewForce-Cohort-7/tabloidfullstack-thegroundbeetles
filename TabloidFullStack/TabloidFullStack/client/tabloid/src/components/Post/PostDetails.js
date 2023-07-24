@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button, Card, CardBody, CardImg, CardText, CardTitle } from "reactstrap";
 import { Link } from "react-router-dom";
+import { Card, CardBody, CardImg, CardText, CardTitle } from "reactstrap";
 import { getPostById } from "../../Managers/PostManager";
 import CommentList from "../CommentList";
 import CommentForm from "../CommentForm";
