@@ -6,7 +6,6 @@ export const Tag = ({ tag }) => {
     <Card>
       <p>Tag Name: {tag.name}</p>
       
-      
     </Card>
     );
 };
