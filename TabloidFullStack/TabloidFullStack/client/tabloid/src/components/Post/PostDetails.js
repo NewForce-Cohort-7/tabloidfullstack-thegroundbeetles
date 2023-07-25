@@ -1,14 +1,23 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-
-import { Card, CardBody, CardImg, CardText, CardTitle } from "reactstrap";
+import { Button, Card, CardBody, CardImg, CardText, CardTitle } from "reactstrap";
+import { Link } from "react-router-dom";
 import { getPostById } from "../../Managers/PostManager";
+import CommentList from "../CommentList";
+import CommentForm from "../CommentForm";
+
 
 export const PostDetails = () => {
     const [post, setPost] = useState();
+    const [showComments, setShowComments] = useState(false);
     const { id } = useParams();
+    
+    /* toggle function for controlling the visibility of the comment list:*/
+    const toggleComments = () => {
+      setShowComments((prevState) => !prevState);
+    };
+    
     
   
     useEffect(() => {
@@ -35,9 +44,13 @@ return (
         Created by: {post?.userProfile?.displayName}
         </CardText>
       </CardBody> 
-</Card>
-    
-    
+      <Button><Link to={`/posts/${post.id}/comments`}>Add Comment</Link></Button>
+      
+      {showComments && <CommentList />}
+      <Button onClick={toggleComments}>
+        {showComments ? "Hide Comments" : "View Comments"}
+      </Button>
+</Card>    
 );
 };
 
