@@ -157,7 +157,7 @@ namespace TabloidFullStack.Repositories
                 ImageLocation, CreateDateTime, PublishDateTime, 
                 IsApproved, CategoryId, UserProfileId)
                 OUTPUT INSERTED.ID
-                VALUES(@title, @content, @imageLocation, @createDateTime, @publishDateTime, @isApproved
+                VALUES(@title, @content, @imageLocation, @createDateTime, @publishDateTime, @isApproved,
                  @categoryId, @userProfileId)";
 
                     DbUtils.AddParameter(cmd, "@title", post.Title);
