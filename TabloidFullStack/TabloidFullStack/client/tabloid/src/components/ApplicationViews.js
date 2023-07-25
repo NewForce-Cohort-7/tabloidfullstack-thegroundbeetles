@@ -3,25 +3,26 @@ import { Route, Routes } from "react-router-dom";
 import Hello from "./Hello";
 import CommentList from "./CommentList";
 import CategoryList from "./CategoryList";
+
 import CategoryForm from "./CategoryForm";
 import { Post } from "./Post/Post";
 import { PostList } from "./Post/PostList";
-import { ViewTags } from "./Tags/ViewTags";
-import { PostDetails } from "./Post/PostDetails";
 import { NewTagForm } from "./Tags/AddTag";
+import { PostDetails } from "./Post/PostDetails";
+import { ViewTags } from "./Tags/ViewTags";
+import CommentForm from "./CommentForm";
 
 export default function ApplicationViews() {
 
  return(
       <Routes>
-        
-        <Route path="/" element={<Hello />} />
-        
-
-      {/* route for the commentlist uses :postId ->using url parameter */}
-        <Route path="/" element={<Hello />} /> 
+      
+      <Route path="/" element={<Hello />} /> 
           {/* route for the commentlist uses :postId ->using url parameter */}
-      <Route path="/comments/:postId" element={<CommentList />} />
+      {/* <Route path="/comments/:postId" element={<CommentList />} /> */}
+
+          /*No idea if this is what the url will resemble*/
+      <Route path="/posts/:id/comments" element={<CommentForm />} />
       <Route path="/category" element= {<CategoryList />} />
       <Route path="/category/add" element={<CategoryForm />} />
       <Route path="/posts" element= {<PostList />} />
@@ -30,7 +31,6 @@ export default function ApplicationViews() {
       <Route path="/tags/add" element={<NewTagForm />}/>
       </Routes>
 
-      
    );
  
 }
