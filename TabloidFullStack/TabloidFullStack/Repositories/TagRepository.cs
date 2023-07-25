@@ -14,8 +14,7 @@ namespace TabloidFullStack.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT Id, Name FROM Tag" +
-                        "ORDER BY Name";
+                    cmd.CommandText = "SELECT Id, Name FROM Tag ORDER BY Name";
                     var reader = cmd.ExecuteReader();
 
                     var tags = new List<Tag>();
@@ -32,6 +31,27 @@ namespace TabloidFullStack.Repositories
                     reader.Close();
 
                     return tags;
+                }
+            }
+        }
+
+        public void Add(Tag tag)  
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO Tag ( Name)
+                        OUTPUT INSERTED.ID
+                        VALUES ( @Name)";
+
+
+                    cmd.Parameters.AddWithValue("@Name", tag.Name);
+
+
+                    tag.Id = (int)cmd.ExecuteScalar();
                 }
             }
         }

@@ -7,6 +7,7 @@ import DeleteCommentForm from "./Comment/DeleteCommentForm";
 import CategoryForm from "./CategoryForm";
 import { Post } from "./Post/Post";
 import { PostList } from "./Post/PostList";
+import { NewTagForm } from "./Tags/AddTag";
 import { PostDetails } from "./Post/PostDetails";
 import { ViewTags } from "./Tags/ViewTags";
 import CommentForm from "./Comment/CommentForm";
@@ -28,6 +29,7 @@ export default function ApplicationViews() {
       <Route path="/posts/:id" element= {<PostDetails/>} />
       <Route path="/comments/:id/delete" element={<DeleteCommentForm/>} />
       <Route path="/tags" element={<ViewTags />}/>
+      <Route path="/tags/add" element={<NewTagForm />}/>
       </Routes>
 
    );

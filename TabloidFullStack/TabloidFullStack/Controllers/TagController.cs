@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TabloidFullStack.Models;
 using TabloidFullStack.Repositories;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -19,6 +20,14 @@ namespace TabloidFullStack.Controllers
         public IActionResult Get()
         {
             return Ok(_tagRepository.GetAllTags());
+        }
+
+        // POST api/<TagController>
+        [HttpPost]
+        public IActionResult Add(Tag tag)
+        {
+            _tagRepository.Add(tag);
+            return CreatedAtAction("Get", new { id = tag.Id }, tag);
         }
 
     }
