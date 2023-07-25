@@ -67,5 +67,29 @@ namespace TabloidFullStack.Repositories
 
             }
         }
+        public void Add(Comment comment)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                INSERT INTO Comment (Subject, Content, CreateDateTime, PostId, UserProfileId)
+                OUTPUT INSERTED.ID /*clause allows you to retrieve the ID of the newly inserted comment, which is then assigned back to the comment.Id*/
+                
+VALUES (@Subject, @Content, @CreateDateTime, @PostId, @UserProfileId)";
+
+                    DbUtils.AddParameter(cmd, "@Subject", comment.Subject);
+                    DbUtils.AddParameter(cmd, "@Content", comment.Content);
+                    DbUtils.AddParameter(cmd, "@CreateDateTime", comment.CreateDateTime);
+                    DbUtils.AddParameter(cmd, "@PostId", comment.PostId);
+                    DbUtils.AddParameter(cmd, "@UserProfileId", comment.UserProfileId);
+
+                    comment.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+
     }
 }

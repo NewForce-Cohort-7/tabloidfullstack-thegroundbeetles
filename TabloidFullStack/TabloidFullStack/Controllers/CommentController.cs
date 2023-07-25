@@ -11,9 +11,12 @@ namespace TabloidFullStack.Controllers
     public class CommentController : ControllerBase
     {
         private readonly ICommentRepository _commentRepository;
-        public CommentController(ICommentRepository commentRepository)
+
+        private readonly IPostRepository _postRepository;
+        public CommentController(ICommentRepository commentRepository, IPostRepository postRepository)
         {
             _commentRepository = commentRepository;
+            _postRepository = postRepository;
         }
 
         [HttpGet("GetCommentsByPost")]
@@ -29,6 +32,17 @@ namespace TabloidFullStack.Controllers
             }
             return Ok(comment);
         }
+
+        [HttpPost]
+        public IActionResult Post(Comment comment)
+        {
+            comment.CreateDateTime = DateTime.Now;
+            _commentRepository.Add(comment);
+
+            // Return a response indicating the comment was created, along with the comment itself.
+            return NoContent();
+        }
+
 
     }
 }

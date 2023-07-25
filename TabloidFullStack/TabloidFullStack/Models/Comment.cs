@@ -20,11 +20,11 @@ namespace TabloidFullStack.Models
             [DisplayName("Post")]
             public int PostId { get; set; }
 
-            public Post Post { get; set; }
+            public Post? Post { get; set; }
 
             [DisplayName("Author")]
             public int UserProfileId { get; set; }
-            public UserProfile UserProfile { get; set; }
+            public UserProfile? UserProfile { get; set; }
 
         }
     }

@@ -7,11 +7,11 @@ export const getAllPosts = () => {
     .then((res) => res.json())
 };
 
+export const GetCommentsByPost= (postId)=> {
+  return fetch(`/api/Comment/GetCommentsByPost?postId=${postId}`) 
+    .then((res) => res.json())
+};
 
-export const getPostById = (id) => {
-    return fetch(`/api/post/${id}`).then((res) => res.json());
-  };
-  
   export const addPost = (singlePost) => { 
     return fetch(baseUrl, {
       method: "POST",
@@ -25,3 +25,18 @@ export const getPostById = (id) => {
   export const getUserPosts = (id) => {
     return fetch(`${baseUrl}/GetUserPosts/${id}`).then((res) => res.json());
   };
+  
+export const addComment = (singlePost) => { 
+  return fetch('/api/Comment', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(singlePost),
+  });
+};
+
+
+ export const getPostById =(id) => {
+  return fetch (`${baseUrl}/${id}`).then((res)=> res.json())
+ };

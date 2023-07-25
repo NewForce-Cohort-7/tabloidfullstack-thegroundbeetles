@@ -7,17 +7,31 @@ const CommentList = () => {
   const [comments, setComments] = useState([]);
 
   /* use useParams to retrieve the postId from the URL parameter*/
-  const { postId } = useParams();
+  const { id } = useParams();
 
-  const fetchCommentsByPost = () => {
-    GetCommentsByPost(postId)
-      .then((allComments) => setComments(allComments))
-      .catch((error) => console.error("Error fetching comments:", error));
-  };
+//   const fetchCommentsByPost = () => {
+//     GetCommentsByPost(postId)
+//       .then((allComments) => setComments(allComments))
+//       .catch((error) => console.error("Error fetching comments:", error));
+//   };
+
+
+const fetchCommentsByPost = () => {
+GetCommentsByPost(id)
+.then((allComments) => {
+  if (Array.isArray(allComments)) {
+    setComments(allComments);
+  } else {
+    console.error("Error: Comments data is not an array");
+    console.log("API response:", allComments);
+  }
+})
+.catch((error) => console.error("Error fetching comments:", error));
+}
 
   useEffect(() => {
     fetchCommentsByPost();
-  }, [postId]);
+  }, [id]);
 
   return (
     <div className="container">
