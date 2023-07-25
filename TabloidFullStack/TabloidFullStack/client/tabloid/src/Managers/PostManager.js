@@ -22,3 +22,6 @@ export const getPostById = (id) => {
     });
   };
   
+  export const getUserPosts = (id) => {
+    return fetch(`${baseUrl}/GetUserPosts/${id}`).then((res) => res.json());
+  };

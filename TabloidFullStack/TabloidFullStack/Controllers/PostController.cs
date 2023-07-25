@@ -22,7 +22,7 @@ namespace TabloidFullStack.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public IActionResult GetPostById(int id)
         {
             Post post = _postRepository.GetPostById(id);
             if (post == null)
@@ -35,11 +35,24 @@ namespace TabloidFullStack.Controllers
         [HttpPost]
         public IActionResult Post(Post post)
         {
+            post.CreateDateTime = DateTime.Now;
+            post.PublishDateTime = DateTime.Now;
             _postRepository.Add(post);
             return CreatedAtAction("Get", new { id = post.Id }, post);
         }
 
+        [HttpGet("GetUserPosts/{id}")]
+        public IActionResult Get(int id)
+        {
+            List<Post> posts = _postRepository.GetPostByUserId(id);
+            if (posts == null)
 
+            {
+                return NotFound(); 
+            }
+
+            return Ok(posts);
+        }
     }
 
 }

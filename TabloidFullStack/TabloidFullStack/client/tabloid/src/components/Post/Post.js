@@ -14,5 +14,5 @@ export const Post = ({ post }) => {
         </Card>
         
       );
-}
+};
 

@@ -11,6 +11,7 @@ import { PostDetails } from "./Post/PostDetails";
 
 import { ViewTags } from "./Tags/ViewTags";
 import { PostForm } from "./Post/PostForm";
+import { UserPosts } from "./Post/UserPosts";
 
 export default function ApplicationViews() {
 
@@ -30,6 +31,7 @@ export default function ApplicationViews() {
       <Route path="/posts/:id" element= {<PostDetails/>} />
       <Route path="/tags" element={<ViewTags />}/>
       <Route path="/posts/add" element={<PostForm />} />
+      <Route path="/my-posts" element={<UserPosts/>} />
       </Routes>
 
       

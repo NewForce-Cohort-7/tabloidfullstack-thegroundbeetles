@@ -16,7 +16,7 @@ export const PostList = () => {
     }, [])
 
     
-    //The Table is put here while the contents are in Post.js. This way the header doesn't pop up for each post
+   
     return (<>
     <button
             onClick={() => navigate("/posts/add")}
@@ -30,7 +30,7 @@ export const PostList = () => {
           <div className="cards-column">
             
               {posts.map((post) => {
-                // console.log(post)
+               
                 return  <Post post={post} />
               })}
             

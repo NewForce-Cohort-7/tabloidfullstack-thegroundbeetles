@@ -8,6 +8,7 @@ export const PostForm = () => {
     const localTabloidUser = localStorage.getItem("userProfile");
     const tabloidUserObject = JSON.parse(localTabloidUser)
     const [categories, setCategories] = useState([])
+    const navigate = useNavigate()
 
     const getCategories = () => {
         getAllCategories().then(allCategories => setCategories(allCategories));
@@ -28,9 +29,10 @@ export const PostForm = () => {
         publishDateTime: Date.now(),
         isApproved: true,
         categoryId: 0,
+        userProfileId: tabloidUserObject.id
 
     })
-    const navigate = useNavigate();
+    
 
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
@@ -40,15 +42,14 @@ export const PostForm = () => {
             Title: post.title,
             Content: post.content,
             ImageLocation: post.imageLocation,
-            CreateDateTime: new Date().toISOString,
-            PublishDateTime: new Date().toDateString,
+            // CreateDateTime: new Date().toISOString,
+            // PublishDateTime: new Date().toISOString,
             IsApproved: true,
             CategoryId: post.categoryId,
             UserProfileId: tabloidUserObject.id
         };
 
-        return addPost(postToSendToAPI)
-  .then(navigate("/posts"));
+        return addPost(postToSendToAPI).then(navigate("/my-posts"));
 };
 
 const selectList = (event) => {
@@ -60,6 +61,7 @@ const selectList = (event) => {
 }
 
 return (
+    <div>
     <form className="PostForm">
         <h2 className="postForm__title">New Post</h2>
         <fieldset>
@@ -85,7 +87,7 @@ return (
                 <input 
                     required autoFocus
                     type="text"
-                    id="title"
+                    id="imageLocation"
                    
                     value={post.imageLocation}
                     onChange={
@@ -141,15 +143,14 @@ return (
                         } </select>  
                         </div>
                         </fieldset>
-        <button
-        onClick={ (clickEvent) => handleSaveButtonClick(clickEvent)}
-        
-        
-        className="btn btn-primary">
+        <button className="btn btn-primary"
+        onClick={ 
+            (clickEvent) => handleSaveButtonClick(clickEvent)
+        }>
             Submit Post
         </button>
     </form>
-)
+</div>)
                 
 
 
