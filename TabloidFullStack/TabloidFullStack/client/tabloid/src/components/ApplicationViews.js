@@ -8,6 +8,7 @@ import { Post } from "./Post/Post";
 import { PostList } from "./Post/PostList";
 import { ViewTags } from "./Tags/ViewTags";
 import { PostDetails } from "./Post/PostDetails";
+import { NewTagForm } from "./Tags/AddTag";
 
 export default function ApplicationViews() {
 
@@ -26,6 +27,7 @@ export default function ApplicationViews() {
       <Route path="/posts" element= {<PostList />} />
       <Route path="/posts/:id" element= {<PostDetails/>} />
       <Route path="/tags" element={<ViewTags />}/>
+      <Route path="/tags/add" element={<NewTagForm />}/>
       </Routes>
 
       
