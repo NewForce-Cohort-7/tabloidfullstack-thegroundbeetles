@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Hello from "./Hello";
 import CommentList from "./Comment/CommentList";
 import CategoryList from "./CategoryList";
-import DeleteCommentForm from "./Comment/DeleteCommentForm";
+import DeleteCommentForm from "./Comment/DeleteButton";
 import CategoryForm from "./CategoryForm";
 import { Post } from "./Post/Post";
 import { PostList } from "./Post/PostList";
@@ -27,7 +27,7 @@ export default function ApplicationViews() {
       <Route path="/category/add" element={<CategoryForm />} />
       <Route path="/posts" element= {<PostList />} />
       <Route path="/posts/:id" element= {<PostDetails/>} />
-      <Route path="/comments/:id/delete" element={<DeleteCommentForm/>} />
+      <Route path="/posts/:postId/comments/:commentId/delete" element={<DeleteCommentForm/>} />
       <Route path="/tags" element={<ViewTags />}/>
       <Route path="/tags/add" element={<NewTagForm />}/>
       </Routes>
