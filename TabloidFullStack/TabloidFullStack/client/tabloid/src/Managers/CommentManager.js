@@ -20,3 +20,14 @@ export const  GetCommentsByPost = (postId) => {
       body: JSON.stringify(singlePost),
     });
   }; 
+
+
+  export const  DeleteCommentsById = (id) => {
+    return fetch(`${baseUrl}/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },}) 
+  };
+
+ 

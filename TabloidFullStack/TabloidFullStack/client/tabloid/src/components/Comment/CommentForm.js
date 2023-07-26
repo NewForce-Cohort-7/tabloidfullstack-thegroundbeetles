@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { addComment } from "../Managers/CommentManager";
+import { addComment } from "../../Managers/CommentManager";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
