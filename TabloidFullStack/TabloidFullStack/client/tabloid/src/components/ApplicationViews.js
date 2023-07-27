@@ -12,9 +12,10 @@ import { PostDetails } from "./Post/PostDetails";
 import { ViewTags } from "./Tags/ViewTags";
 import { PostForm } from "./Post/PostForm";
 import { UserPosts } from "./Post/UserPosts";
-import CommentForm from "./CommentForm";
+
 import { PostEdit } from "./Post/PostEdit";
 import CommentForm from "./Comment/CommentForm";
+
 
 export default function ApplicationViews() {
 
@@ -26,7 +27,7 @@ export default function ApplicationViews() {
       {/* <Route path="/comments/:postId" element={<CommentList />} /> */}
 
           /*No idea if this is what the url will resemble*/
-      <Route path="/posts/:id/comments" element={<CommentForm />} />
+      <Route path="/posts/:id/comments" element={<CommentForm/>} />
       <Route path="/category" element= {<CategoryList />} />
       <Route path="/category/add" element={<CategoryForm />} />
       <Route path="/posts" element= {<PostList />} />

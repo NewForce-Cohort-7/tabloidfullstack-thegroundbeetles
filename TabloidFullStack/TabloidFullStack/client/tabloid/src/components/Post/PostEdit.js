@@ -128,7 +128,7 @@ return (
                     type="text"
                     id="content"
                     
-                    value={post.caption}
+                    value={post.content}
                     onChange={
                         (evt) => {
                             const copy = {...post}
