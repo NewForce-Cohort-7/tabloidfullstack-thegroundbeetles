@@ -51,5 +51,17 @@ namespace TabloidFullStack.Controllers
             return NoContent();
         }
 
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Category category)
+        {
+            if (id != category.Id)
+            {
+                return BadRequest();
+            }
+
+            _categoryRepository.Update(category);
+            return NoContent();
+        }
+
     }
 }
