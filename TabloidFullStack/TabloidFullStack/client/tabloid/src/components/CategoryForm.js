@@ -21,7 +21,7 @@ export const CategoryForm = () => {
         };
 
          addCategory(categoryToSendToAPI)
-                .then(() => navigate("/category")); //takes user back to home route
+                .then(() => navigate("/category")); //takes user back to category list
     };
 
     return (

@@ -5,12 +5,14 @@ import CommentList from "./Comment/CommentList";
 import CategoryList from "./CategoryList";
 import DeleteCommentForm from "./Comment/DeleteButton";
 import CategoryForm from "./CategoryForm";
+import { DeleteCategory } from "./CategoryDelete";
 import { Post } from "./Post/Post";
 import { PostList } from "./Post/PostList";
 import { NewTagForm } from "./Tags/AddTag";
 import { PostDetails } from "./Post/PostDetails";
 import { ViewTags } from "./Tags/ViewTags";
 import CommentForm from "./Comment/CommentForm";
+import { EditCategory } from "./CategoryEdit";
 
 export default function ApplicationViews() {
 
@@ -25,6 +27,8 @@ export default function ApplicationViews() {
       <Route path="/posts/:id/comments" element={<CommentForm />} />
       <Route path="/category" element= {<CategoryList />} />
       <Route path="/category/add" element={<CategoryForm />} />
+      <Route path="/category/delete/:categoryId" element={<DeleteCategory />} />
+      <Route path="/category/edit/:categoryId" element={<EditCategory />} />
       <Route path="/posts" element= {<PostList />} />
       <Route path="/posts/:id" element= {<PostDetails/>} />
       <Route path="/posts/:postId/comments/:commentId/delete" element={<DeleteCommentForm/>} />

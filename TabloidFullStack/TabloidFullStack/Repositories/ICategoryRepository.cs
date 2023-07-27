@@ -6,5 +6,11 @@ namespace TabloidFullStack.Repositories
     {
         List<Category> GetAll();
         void Add(Category category);
+
+        Category GetById(int id);
+
+        void Delete(int id);
+
+        void Update(Category category);
     }
 }
