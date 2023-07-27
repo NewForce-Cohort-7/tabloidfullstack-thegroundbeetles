@@ -40,3 +40,21 @@ export const addComment = (singlePost) => {
  export const getPostById =(id) => {
   return fetch (`${baseUrl}/${id}`).then((res)=> res.json())
  };
+
+ export const deletePost = (id) => {
+  return fetch(`/api/post/${id}`, {
+    method: "DELETE",
+  })
+    .then(() => getAllPosts())
+};
+
+export const editPost = (post) => {
+  console.log(post)
+  return fetch(`/api/post/${post.Id}`, {
+      method: "PUT",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(post)
+  }).then(() => getAllPosts())
+}

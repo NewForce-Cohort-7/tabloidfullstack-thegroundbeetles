@@ -53,6 +53,25 @@ namespace TabloidFullStack.Controllers
 
             return Ok(posts);
         }
-    }
 
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _postRepository.Delete(id);
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Post post)
+        {
+            if (id != post.Id)
+            {
+                return BadRequest();
+            }
+            post.CreateDateTime = DateTime.Now;
+            post.PublishDateTime = DateTime.Now;
+            _postRepository.Update(post);
+            return NoContent();
+        }
+    }
 }

@@ -13,6 +13,7 @@ import { ViewTags } from "./Tags/ViewTags";
 import { PostForm } from "./Post/PostForm";
 import { UserPosts } from "./Post/UserPosts";
 import CommentForm from "./CommentForm";
+import { PostEdit } from "./Post/PostEdit";
 
 export default function ApplicationViews() {
 
@@ -33,6 +34,7 @@ export default function ApplicationViews() {
       <Route path="/posts/add" element={<PostForm />} />
       <Route path="/my-posts" element={<UserPosts/>} />
       <Route path="/tags/add" element={<NewTagForm />}/>
+      <Route path="/posts/edit/:postId" element={<PostEdit />} />
       </Routes>
 
    );

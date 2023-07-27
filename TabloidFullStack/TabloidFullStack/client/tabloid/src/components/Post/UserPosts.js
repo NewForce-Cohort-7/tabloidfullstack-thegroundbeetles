@@ -26,18 +26,11 @@ export const UserPosts = () => {
         <div className="post-list">
           <div className="row justify-content-center">
             <div className="cards-column">
-              <Table> 
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Author</th>
-                  <th>Category</th>
-                </tr>
-              </thead>
+              
               {userPosts.map((post) => {
                 return  <Post key={post.id} post={post} />
               })}
-              </Table>
+              
             </div>
           </div>
         </div>
