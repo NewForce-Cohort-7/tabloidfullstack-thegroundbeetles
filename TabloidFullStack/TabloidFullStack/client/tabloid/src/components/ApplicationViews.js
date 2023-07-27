@@ -1,9 +1,9 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Hello from "./Hello";
-import CommentList from "./CommentList";
+import CommentList from "./Comment/CommentList";
 import CategoryList from "./CategoryList";
-
+import DeleteCommentForm from "./Comment/DeleteButton";
 import CategoryForm from "./CategoryForm";
 import { Post } from "./Post/Post";
 import { PostList } from "./Post/PostList";
@@ -14,6 +14,7 @@ import { PostForm } from "./Post/PostForm";
 import { UserPosts } from "./Post/UserPosts";
 import CommentForm from "./CommentForm";
 import { PostEdit } from "./Post/PostEdit";
+import CommentForm from "./Comment/CommentForm";
 
 export default function ApplicationViews() {
 
@@ -30,6 +31,7 @@ export default function ApplicationViews() {
       <Route path="/category/add" element={<CategoryForm />} />
       <Route path="/posts" element= {<PostList />} />
       <Route path="/posts/:id" element= {<PostDetails/>} />
+      <Route path="/posts/:postId/comments/:commentId/delete" element={<DeleteCommentForm/>} />
       <Route path="/tags" element={<ViewTags />}/>
       <Route path="/posts/add" element={<PostForm />} />
       <Route path="/my-posts" element={<UserPosts/>} />
