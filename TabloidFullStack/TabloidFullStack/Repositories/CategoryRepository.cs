@@ -1,0 +1,66 @@
+﻿using Microsoft.Extensions.Hosting;
+using TabloidFullStack.Models;
+using TabloidFullStack.Utils;
+
+namespace TabloidFullStack.Repositories
+{
+    public class CategoryRepository : BaseRepository, ICategoryRepository
+
+    {
+        public CategoryRepository(IConfiguration configuration) : base(configuration) { }
+
+        public List<Category> GetAll() //gets category Data
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                SELECT Id, Name FROM Category
+                      ORDER BY Name"; 
+
+                    var reader = cmd.ExecuteReader(); 
+                    
+                    var categories = new List<Category>();
+                    while (reader.Read()) //tells it to keep reading data until the end of data.
+                    {
+                        categories.Add(new Category()
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            Name = DbUtils.GetString(reader, "Name")
+
+                        }
+                        );
+                    }
+
+                    reader.Close();
+                    return categories;
+                }
+            }
+        }
+        public void Add(Category category) //saves a NEW post. Like an insert. 
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO Category ( Name)
+                        OUTPUT INSERTED.ID
+                        VALUES ( @Name)";
+
+                 
+                    DbUtils.AddParameter(cmd, "@Name",category.Name);
+                    
+
+                    category.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+    }
+}
+
+   
+           
