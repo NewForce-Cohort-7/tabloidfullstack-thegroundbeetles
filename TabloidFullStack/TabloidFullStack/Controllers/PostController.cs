@@ -22,7 +22,7 @@ namespace TabloidFullStack.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public IActionResult GetPostById(int id)
         {
             Post post = _postRepository.GetPostById(id);
             if (post == null)
@@ -32,6 +32,46 @@ namespace TabloidFullStack.Controllers
             return Ok(post);
         }
 
-    }
+        [HttpPost]
+        public IActionResult Post(Post post)
+        {
+            post.CreateDateTime = DateTime.Now;
+            post.PublishDateTime = DateTime.Now;
+            _postRepository.Add(post);
+            return CreatedAtAction("Get", new { id = post.Id }, post);
+        }
 
+        [HttpGet("GetUserPosts/{id}")]
+        public IActionResult Get(int id)
+        {
+            List<Post> posts = _postRepository.GetPostByUserId(id);
+            if (posts == null)
+
+            {
+                return NotFound(); 
+            }
+
+            return Ok(posts);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _postRepository.Delete(id);
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Post post)
+        {
+            if (id != post.Id)
+            {
+                return BadRequest();
+            }
+            post.CreateDateTime = DateTime.Now;
+            post.PublishDateTime = DateTime.Now;
+            _postRepository.Update(post);
+            return NoContent();
+        }
+    }
 }
